@@ -9,7 +9,9 @@ namespace Business.Abstract
 {
     public interface IBrandService
     {
-        public void Add(Brand brand);
+        void Add(Brand brand);
+        void Update(Brand brand);
+        void Delete(Brand brand);
        
     }
 }

@@ -18,12 +18,11 @@ namespace ConsoleUI
             //{
             //    Console.WriteLine(car.Description);
             //}
-
+            //Console'da Tüm CRUD operasyonlarınızı Car, Brand, Model nesneleriniz için test ediniz. GetAll, GetById, Insert, Update, Delete.
+           
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetCarDetails())
-            {
-                Console.WriteLine(car.BrandName + " : " + car.ColorName + " : " + car.DailyPrice);
-            }
+            // carManager.Delete(new Car {Id=2, BrandId = 1, ColorId = 1, DailyPrice = 300, Description = "Deneme", ModelYear = new DateTime(2010, 04, 12) });
+            carManager.Update(new Car { Id = 3, BrandId = 2, ColorId = 2, DailyPrice = 350, Description = "Güncellendi", ModelYear = new DateTime(2011, 05, 13) });
         }
 
         private static void AddBrand()
