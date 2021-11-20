@@ -10,19 +10,27 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            // CarManager carManager = AddCar();
+           // AddUser();
+           // AddCustomer();
+            AddRental();
+        }
 
-            //AddColor();
-            //AddBrand();
-            //foreach (var car in carManager.GetCarsByColorId(3))
-            //{
-            //    Console.WriteLine(car.Description);
-            //}
-            //Console'da Tüm CRUD operasyonlarınızı Car, Brand, Model nesneleriniz için test ediniz. GetAll, GetById, Insert, Update, Delete.
-           
-            CarManager carManager = new CarManager(new EfCarDal());
-            // carManager.Delete(new Car {Id=2, BrandId = 1, ColorId = 1, DailyPrice = 300, Description = "Deneme", ModelYear = new DateTime(2010, 04, 12) });
-            carManager.Update(new Car { Id = 3, BrandId = 2, ColorId = 2, DailyPrice = 350, Description = "Güncellendi", ModelYear = new DateTime(2011, 05, 13) });
+        private static void AddCustomer()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            customerManager.Add(new Customer { UserID = 2, CompanyName = "fdd" });
+        }
+
+        private static void AddUser()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+            userManager.Add(new User { FirstName = "Pelin", LastName = "Altürk", Email = "pelinalturk7@gmail.com", Password_ = "123" });
+        }
+
+        private static void AddRental()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            rentalManager.Add(new Rental { CarId = 3, CustomerId = 1, RentDate = new DateTime(2021, 11, 20), ReturnDate = new DateTime(2021, 11, 21) });
         }
 
         private static void AddBrand()
