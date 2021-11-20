@@ -20,11 +20,10 @@ namespace Business.Concrete
         }
 
         public IResult Add(Rental rental)
-        {//kiralanabilmesi için teslim edilmiş olmalı
-            var getCar = _rentalDal.Get(r => r.CarId == rental.CarId);
-            if (getCar.ReturnDate > DateTime.Now)
+        {
+            var result = _rentalDal.IsCarARental(rental.CarId) == true & rental.ReturnDate > DateTime.Now ? true : false;
+            if (result)
             {
-                Console.WriteLine(DateTime.Now);
                 return new ErrorResult();
             }
             else
@@ -38,6 +37,11 @@ namespace Business.Concrete
         {
             _rentalDal.Delete(rental);
             return new SuccesResult();
+        }
+
+        public IDataResult<List<Rental>> GetAll()
+        {
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
         }
 
         public IResult Update(Rental rental)

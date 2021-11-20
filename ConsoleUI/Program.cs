@@ -10,15 +10,17 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-           // AddUser();
-           // AddCustomer();
+            // AddUser();
+            // AddCustomer();
             AddRental();
+            
         }
 
         private static void AddCustomer()
         {
             CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
-            customerManager.Add(new Customer { UserID = 2, CompanyName = "fdd" });
+            customerManager.Add(new Customer {UserID=2, CompanyName = "KodlamaIO" });
+           
         }
 
         private static void AddUser()

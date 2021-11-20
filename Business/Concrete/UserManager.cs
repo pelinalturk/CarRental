@@ -24,5 +24,17 @@ namespace Business.Concrete
             _userDal.Add(user);
             return new SuccesResult("Added");
         }
+
+        public IResult Delete(User user)
+        {
+            _userDal.Delete(user);
+            return new SuccesResult("Added");
+        }
+
+        public IResult Update(User user)
+        {
+            _userDal.Update(user);
+            return new SuccesResult("Added");
+        }
     }
 }
