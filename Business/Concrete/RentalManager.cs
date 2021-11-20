@@ -22,7 +22,7 @@ namespace Business.Concrete
         public IResult Add(Rental rental)
         {//kiralanabilmesi için teslim edilmiş olmalı
             var getCar = _rentalDal.Get(r => r.CarId == rental.CarId);
-            if (getCar.ReturnDate < DateTime.Now)
+            if (getCar.ReturnDate > DateTime.Now)
             {
                 Console.WriteLine(DateTime.Now);
                 return new ErrorResult();
